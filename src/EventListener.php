@@ -29,6 +29,7 @@ class EventListener implements Listener {
             EconomyAPI::getInstance()->addMoney($player, $total);
             $player->getInventory()->setItemInHand($item);
         }
+        return true;
     }
 
     public function onDeath(EntityDeathEvent $event){
@@ -53,6 +54,7 @@ class EventListener implements Listener {
             case 3:
                 break;
         }
+        return true;
     }
 
 }
