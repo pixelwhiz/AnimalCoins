@@ -9,14 +9,9 @@ use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
-use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
 class EventListener implements Listener {
-
-    public function getPlugin() : AnimalCoins {
-        return AnimalCoins::getInstance();
-    }
 
     public function onUse(PlayerItemUseEvent $event){
         $player = $event->getPlayer();
