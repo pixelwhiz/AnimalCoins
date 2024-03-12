@@ -31,21 +31,6 @@ class AnimalCoins extends PluginBase {
         $this->getServer()->getLogger()->info("Plugin Disabled by DpGenx!");
     }
 
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
-    {
-        switch ($command->getName()){
-            case "animalcoins":
-                $sender->sendMessage("§b=== Animal Coins ===");
-                $sender->sendMessage("§7-> Author: PixelWhiz");
-                $sender->sendMessage("§7-> Website: https://github.com/pixelwhiz/AnimalCoins");
-                $sender->sendMessage("§7-> Description: bunuh Mob / Monster untuk Mendapatkan Coins");
-                $sender->sendMessage("§b=== Animal Coins ===");
-
-                break;
-        }
-        return true;
-    }
-
     public static function getInstance(): AnimalCoins {
         return self::$instance;
     }

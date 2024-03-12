@@ -6,11 +6,4 @@ api: 5.0.0
 src-namespace-prefix: pixelwhiz\animalcoins
 depend:
   - EconomyAPI
-commands:
-  animalcoins:
-    permission: animalcoins.cmd
-    description: "About of Animal Coins"
-permissions:
-  animalcoins.cmd:
-    default: op
 ...
