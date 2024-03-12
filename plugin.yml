@@ -1,8 +1,11 @@
 ---
 name: AnimalCoins
 version: 0.0.1
-main: dpgenx\animalcoins\AnimalCoins
-api: 4.0.0
+main: pixelwhiz\animalcoins\AnimalCoins
+api: 5.0.0
+src-namespace-prefix: pixelwhiz\animalcoins
+depend:
+  - EconomyAPI
 commands:
   animalcoins:
     permission: animalcoins.cmd

@@ -1,16 +1,5 @@
-## Author: DpGenx
-## Website: https://dpgenx.ddns.net/pocketmine/plugins
-# Version: Pro Release
-
-## Contact Me: 6281808108514
-
 Coins:
   name: "Animal Coins"
-  lore: [
-    - "",
-    - "Click to Redeem",
-    - ""
-  ]
 
 Rewards:
   enable: true

@@ -1,13 +1,15 @@
 <?php
 
-namespace dpgenx\animalcoins;
+namespace pixelwhiz\animalcoins;
 
-use pocketmine\item\enchantment\EnchantmentInstance;
+use onebone\economyapi\EconomyAPI;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemUseEvent;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\enchantment\EnchantmentInstance;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
 class EventListener implements Listener {
@@ -20,16 +22,16 @@ class EventListener implements Listener {
         $player = $event->getPlayer();
         $item = $player->getInventory()->getItemInHand();
 
-        if(!AnimalCoins::getInstance()->config->get("Rewards")["enable"] == true) return false;
+        if (!AnimalCoins::getInstance()->config->get("Rewards")["enable"]) return false;
 
-        if($item->getCustomName() == AnimalCoins::getInstance()->config->get("Coins")["name"]){
+        if ($item->getCustomName() === AnimalCoins::getInstance()->config->get("Coins")["name"]){
             $count = $item->getCount();
             $money = mt_rand(AnimalCoins::getInstance()->config->get("Rewards")["min-money"], AnimalCoins::getInstance()->config->get("Rewards")["max-money"]);
             $item->setCount($count - $item->getCount());
             $total = $money * $count;
-            $player->sendMessage("Earned $ ".number_format($total)." from Animal Coins");
-            $this->economy = $this->getPlugin()->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-            $this->economy->addMoney($player, $total);
+            $message = str_replace("{REWARDS}", "$".number_format($total), AnimalCoins::getInstance()->config->get("Rewards")["message"]);
+            $player->sendMessage($message);
+            EconomyAPI::getInstance()->addMoney($player, $total);
             $player->getInventory()->setItemInHand($item);
         }
     }
@@ -38,7 +40,7 @@ class EventListener implements Listener {
         $entity = $event->getEntity();
         $drops = $event->getDrops();
         if($entity instanceof Player) return false;
-        $item = ItemFactory::getInstance()->get(175, 0, 1);
+        $item = VanillaBlocks::SUNFLOWER()->asItem();
         $item->setCustomName(AnimalCoins::getInstance()->config->get("Coins")["name"]);
         $item->setLore([
             "Click to Redeem"
