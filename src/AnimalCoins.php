@@ -15,7 +15,7 @@ class AnimalCoins extends PluginBase {
     public function onEnable(): void
     {
         self::$instance = $this;
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->saveDefaultConfig();
         $this->saveResource("config.yml");
         $this->config = new Config($this->getDataFolder() . "config.yml");

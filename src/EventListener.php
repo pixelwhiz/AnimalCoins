@@ -8,7 +8,6 @@ use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\player\Player;
@@ -17,9 +16,7 @@ class EventListener implements Listener {
 
     public function onUse(PlayerItemUseEvent $event){
         $player = $event->getPlayer();
-        $item = $player->getInventory()->getItemInHand();
-
-        if (!AnimalCoins::getInstance()->config->get("Rewards")["enable"]) return false;
+        $item = $event->getItem();
 
         if ($item->getCustomName() === AnimalCoins::getInstance()->config->get("Coins")["name"]){
             $count = $item->getCount();
@@ -31,7 +28,6 @@ class EventListener implements Listener {
             EconomyAPI::getInstance()->addMoney($player, $total);
             $player->getInventory()->setItemInHand($item);
         }
-        return true;
     }
 
     public function onPlace(BlockPlaceEvent $event) {

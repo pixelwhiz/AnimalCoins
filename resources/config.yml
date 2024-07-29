@@ -2,7 +2,6 @@ Coins:
   name: "Animal Coins"
 
 Rewards:
-  enable: true
   message: "You earned {REWARDS} from Animal Coins"
   min-money: 100
   max-money: 1000
