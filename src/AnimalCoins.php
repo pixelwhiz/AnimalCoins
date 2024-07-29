@@ -9,7 +9,7 @@ use pocketmine\utils\Config;
 
 class AnimalCoins extends PluginBase {
 
-    public static $instance;
+    public static self $instance;
     public Config $config;
 
     public function onEnable(): void
