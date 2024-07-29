@@ -3,6 +3,7 @@ name: AnimalCoins
 version: 0.0.1
 main: pixelwhiz\animalcoins\AnimalCoins
 api: 5.0.0
+author: pixelwhiz
 src-namespace-prefix: pixelwhiz\animalcoins
 depend:
   - EconomyAPI
