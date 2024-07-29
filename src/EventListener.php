@@ -7,6 +7,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\player\Player;
@@ -28,6 +29,15 @@ class EventListener implements Listener {
             $player->sendMessage($message);
             EconomyAPI::getInstance()->addMoney($player, $total);
             $player->getInventory()->setItemInHand($item);
+        }
+        return true;
+    }
+
+    public function onInteract(PlayerInteractEvent $event) {
+        $player = $event->getPlayer();
+        $item = $player->getInventory()->getItemInHand();
+        if ($item->getCustomName() === AnimalCoins::getInstance()->config->get("Coins")["name"]){
+            $event->cancel();
         }
         return true;
     }
