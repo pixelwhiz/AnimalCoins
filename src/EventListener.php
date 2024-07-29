@@ -5,6 +5,7 @@ namespace pixelwhiz\animalcoins;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\EnchantmentIdMap;
+use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -33,13 +34,12 @@ class EventListener implements Listener {
         return true;
     }
 
-    public function onInteract(PlayerInteractEvent $event) {
+    public function onPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
-        $item = $player->getInventory()->getItemInHand();
+        $item = $event->getItem();
         if ($item->getCustomName() === AnimalCoins::getInstance()->config->get("Coins")["name"]){
             $event->cancel();
         }
-        return true;
     }
 
     public function onDeath(EntityDeathEvent $event){
