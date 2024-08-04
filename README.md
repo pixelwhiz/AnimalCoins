@@ -11,7 +11,7 @@
 ## Installation
 
 1. **Download the Plugin**:
-   - Download the `AnimalCoins.phar` file from the [releases page](link_to_your_releases_page).
+   - Download the `AnimalCoins.phar` file from the [releases page](https://poggit.pmmp.io/ci/pixelwhiz/AnimalCoins/AnimalCoins).
 
 2. **Install the Plugin**:
    - Place the `AnimalCoins.phar` file in the `plugins` directory of your PocketMine-MP server.
